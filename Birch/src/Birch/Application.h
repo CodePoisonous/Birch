@@ -8,7 +8,7 @@ namespace Birch
 	{
 	public:
 		Application();
-		~Application();
+		virtual ~Application();
 
 		void Run();
 	};

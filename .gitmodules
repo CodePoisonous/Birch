@@ -1,0 +1,3 @@
+[submodule "Birch/vendor/spdlog"]
+	path = Birch/vendor/spdlog
+	url = https://gitclone.com/github.com/gabime/spdlog
