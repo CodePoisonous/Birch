@@ -4,6 +4,9 @@
     <Filter Include="Birch">
       <UniqueIdentifier>{4DD7E40C-B9EB-0CBE-826D-B01DEE4009EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Birch\Events">
+      <UniqueIdentifier>{91AA6F49-7D0D-FFED-2693-37A412D5CA70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Birch.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Birch\EntryPoint.h">
       <Filter>Birch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\Events\ApplicationEvent.h">
+      <Filter>Birch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\Events\Event.h">
+      <Filter>Birch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\Events\KeyEvent.h">
+      <Filter>Birch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\Events\MouseEvent.h">
+      <Filter>Birch\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Birch\Log.h">
       <Filter>Birch</Filter>
