@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Birch
 {
 	class BIRCH_API MouseMovedEvent : public Event

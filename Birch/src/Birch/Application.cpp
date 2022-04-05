@@ -1,3 +1,4 @@
+#include "bcpch.h"
 #include "Application.h"
 
 #include "Birch/Events/ApplicationEvent.h"
