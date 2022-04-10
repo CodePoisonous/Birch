@@ -1,7 +1,6 @@
 #pragma once
 
 #include "bcpch.h"
-
 #include "Birch/Core.h"
 
 namespace Birch

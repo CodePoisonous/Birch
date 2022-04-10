@@ -7,6 +7,12 @@
     <Filter Include="Birch\Events">
       <UniqueIdentifier>{91AA6F49-7D0D-FFED-2693-37A412D5CA70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Birch.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Birch\Log.h">
       <Filter>Birch</Filter>
     </ClInclude>
+    <ClInclude Include="src\Birch\Window.h">
+      <Filter>Birch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\bcpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Birch\Log.cpp">
       <Filter>Birch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bcpch.cpp" />
   </ItemGroup>

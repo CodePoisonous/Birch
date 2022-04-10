@@ -10,6 +10,12 @@ workspace "Birch"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directories)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Birch/vendor/GLFW/include"
+
+include "Birch/vendor/GLFW"
+
 project "Birch"
 	location "Birch"
 	kind "SharedLib"
@@ -30,7 +36,14 @@ project "Birch"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -41,7 +54,8 @@ project "Birch"
 		defines
 		{
 			"BC_PLATFORM_WINDOWS",
-			"BC_BUILD_DLL"
+			"BC_BUILD_DLL",
+			"BC_ENABLE_ASSERTS"
 		}
 
 		postbuildcommands

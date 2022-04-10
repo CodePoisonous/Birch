@@ -1,3 +1,6 @@
 [submodule "Birch/vendor/spdlog"]
 	path = Birch/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Birch/vendor/GLFW"]
+	path = Birch/vendor/GLFW
+	url = https://gitclone.com/github.com/chuyan1/glfw

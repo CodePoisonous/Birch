@@ -30,7 +30,7 @@ namespace Birch
 
 // Client log macros
 #define BC_TRACE(...)	::Birch::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define BC_INFO(...)		::Birch::Log::GetClientLogger()->info(__VA_ARGS__)
-#define BC_WARN(...)		::Birch::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define BC_INFO(...)	::Birch::Log::GetClientLogger()->info(__VA_ARGS__)
+#define BC_WARN(...)	::Birch::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define BC_ERROR(...)	::Birch::Log::GetClientLogger()->error(__VA_ARGS__)
 #define BC_FATAL(...)	::Birch::Log::GetClientLogger()->fatal(__VA_ARGS__)
