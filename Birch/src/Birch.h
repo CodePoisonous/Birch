@@ -3,6 +3,7 @@
 // For use by Birch application
 
 #include "Birch/Application.h"
+#include "Birch/Layer.h"
 #include "Birch/Log.h"
 
 // --Entry Point-----------------------

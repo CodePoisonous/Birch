@@ -37,6 +37,12 @@
     <ClInclude Include="src\Birch\Events\MouseEvent.h">
       <Filter>Birch\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Birch\Layer.h">
+      <Filter>Birch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\LayerStack.h">
+      <Filter>Birch</Filter>
+    </ClInclude>
     <ClInclude Include="src\Birch\Log.h">
       <Filter>Birch</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp">
+      <Filter>Birch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Birch\Layer.cpp">
+      <Filter>Birch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Birch\LayerStack.cpp">
       <Filter>Birch</Filter>
     </ClCompile>
     <ClCompile Include="src\Birch\Log.cpp">

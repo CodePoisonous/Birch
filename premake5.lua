@@ -65,14 +65,17 @@ project "Birch"
 
 	filter "configurations:Debug"
 		defines "BC_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "BC_RELESASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "BC_DIST"
+		buildoptions "/MD"
 		symbols "On"
 
 project "Sandbox"
@@ -112,12 +115,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "BC_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "BC_RELESASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "BC_DIST"
+		buildoptions "/MD"
 		symbols "On"
