@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directories)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Birch/vendor/GLFW/include"
+IncludeDir["Glad"] = "Birch/vendor/Glad/include"
 
 include "Birch/vendor/GLFW"
+include "Birch/vendor/Glad"
 
 project "Birch"
 	location "Birch"
@@ -37,12 +39,14 @@ project "Birch"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,7 @@ project "Birch"
 		{
 			"BC_PLATFORM_WINDOWS",
 			"BC_BUILD_DLL",
-			"BC_ENABLE_ASSERTS"
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

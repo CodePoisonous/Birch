@@ -5,6 +5,8 @@
 #include "Birch/Events/MouseEvent.h"
 #include "Birch/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Birch
 {
 	static bool s_GLFWInitialized = false;
@@ -13,7 +15,7 @@ namespace Birch
 	{
 		BC_CORE_ERROR("GLFW Error ({0}): {1}", error_code, description);
 	}
-
+	    
 	Window* Window::Create(const WindowProps& props)
 	{
 		return new WindowsWindow(props);
@@ -48,6 +50,8 @@ namespace Birch
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		BC_CORE_ASSERTS(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);		// void*		
 		SetVSync(true);
 
