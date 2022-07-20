@@ -25,9 +25,9 @@ class Sandbox : public Birch::Application
 public:
 	Sandbox() 
 	{
-		PushLayer(new ExampleLayer("ExampleLayer 1"));
-		PushLayer(new ExampleLayer("ExampleLayer 2"));
-		PushLayer(new ExampleLayer("ExampleLayer 3"));
+		PushLayer(new ExampleLayer("ExampleLayer"));
+
+		PushLayer(new Birch::ImGuiLayer());
 	}
 	~Sandbox() {}
 };

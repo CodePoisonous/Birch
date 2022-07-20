@@ -6,6 +6,8 @@
 #include "Birch/Layer.h"
 #include "Birch/Log.h"
 
+#include "Birch/ImGui/ImGuiLayer.h"
+
 // --Entry Point-----------------------
 #include "Birch/EntryPoint.h"
 // ------------------------------------
