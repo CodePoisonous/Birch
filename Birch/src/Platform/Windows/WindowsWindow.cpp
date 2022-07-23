@@ -102,6 +102,14 @@ namespace Birch
 			}			
 		});
 
+		// 字符回调
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int codepoint)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(codepoint);
+			data.EventCallback(event);
+		});
+
 		// 鼠标按键回调
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 		{
