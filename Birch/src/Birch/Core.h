@@ -10,6 +10,10 @@
 	#error Birch only support Windows!
 #endif
 
+#ifdef BC_DEBUG
+	#define BC_ENABLE_ASSERTS
+#endif
+
 #ifdef BC_ENABLE_ASSERTS
 	#define BC_ASSERTS(x, ...) { if(!(x)) { BC_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define BC_CORE_ASSERTS(x, ...) { if(!(x)) { BC_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}

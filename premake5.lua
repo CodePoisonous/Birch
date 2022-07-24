@@ -1,5 +1,6 @@
 workspace "Birch"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -24,9 +25,10 @@ project "Birch"
 	location "Birch"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	pchheader "bcpch.h"
 	pchsource "Birch/src/bcpch.cpp"
@@ -56,7 +58,6 @@ project "Birch"
 
 	filter "system:windows"
 		cppdialect "c++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -73,26 +74,27 @@ project "Birch"
 
 	filter "configurations:Debug"
 		defines "BC_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "BC_RELESASE"
-		buildoptions "/MD"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "BC_DIST"
-		buildoptions "/MD"
+		runtime "Debug"
 		symbols "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
@@ -113,7 +115,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "c++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -123,15 +124,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "BC_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "BC_RELESASE"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "BC_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
