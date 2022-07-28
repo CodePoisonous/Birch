@@ -68,6 +68,12 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\bcpch.h" />
+    <ClInclude Include="src\Birch\Input.h">
+      <Filter>Birch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Birch\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp">
@@ -92,5 +98,8 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bcpch.cpp" />
+    <ClCompile Include="src\Birch\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

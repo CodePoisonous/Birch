@@ -142,6 +142,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Birch\Input.h" />
     <ClInclude Include="src\Birch.h" />
     <ClInclude Include="src\Birch\Application.h" />
     <ClInclude Include="src\Birch\Core.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bcpch.h" />
+    <ClInclude Include="src\Birch\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp" />
@@ -171,6 +173,7 @@
     <ClCompile Include="src\bcpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Birch\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
