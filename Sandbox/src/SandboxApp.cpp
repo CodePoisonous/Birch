@@ -4,18 +4,25 @@ class ExampleLayer : public Birch::Layer
 {
 public:
 	ExampleLayer(std::string layerName)
-		:Layer(layerName)
+		:Layer(layerName)	
 	{
 	}
 
 	void OnUpdate() override
 	{
-		BC_INFO(m_DebugName + "::Update");
+		if (Birch::Input::IsKeyPressed(BC_KEY_TAB))
+			BC_TRACE("Tab key is pressed(poll)!");
 	}
 
 	void OnEvent(Birch::Event& event) override
 	{
-		BC_TRACE("{0}", event);
+		if (event.GetEventType() == Birch::EventType::KeyPressed)
+		{
+			Birch::KeyPressedEvent& e = (Birch::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == BC_KEY_TAB)
+				BC_TRACE("Tab key is pressed(event)!");
+			BC_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 
 };

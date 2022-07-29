@@ -71,9 +71,11 @@
     <ClInclude Include="src\Birch\Input.h">
       <Filter>Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\WindowsInput.h">
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Birch\KeyCodes.h" />
+    <ClInclude Include="src\Birch\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp">
@@ -98,7 +100,7 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\bcpch.cpp" />
-    <ClCompile Include="src\Birch\WindowsInput.cpp">
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
   </ItemGroup>

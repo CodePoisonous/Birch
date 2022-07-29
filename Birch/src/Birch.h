@@ -6,6 +6,10 @@
 #include "Birch/Layer.h"
 #include "Birch/Log.h"
 
+#include "Birch/Input.h"
+#include "Birch/KeyCodes.h"
+#include "Birch/MouseButtonCodes.h"
+
 #include "Birch/ImGui/ImGuiLayer.h"
 
 // --Entry Point-----------------------

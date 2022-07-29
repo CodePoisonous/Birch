@@ -152,15 +152,17 @@
     <ClInclude Include="src\Birch\Events\KeyEvent.h" />
     <ClInclude Include="src\Birch\Events\MouseEvent.h" />
     <ClInclude Include="src\Birch\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Birch\KeyCodes.h" />
     <ClInclude Include="src\Birch\Layer.h" />
     <ClInclude Include="src\Birch\LayerStack.h" />
     <ClInclude Include="src\Birch\Log.h" />
+    <ClInclude Include="src\Birch\MouseButtonCodes.h" />
     <ClInclude Include="src\Birch\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bcpch.h" />
-    <ClInclude Include="src\Birch\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp" />
@@ -173,7 +175,7 @@
     <ClCompile Include="src\bcpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Birch\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
