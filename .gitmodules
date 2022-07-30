@@ -1,4 +1,4 @@
 
 [submodule "Birch/vendor/glm"]
 	path = Birch/vendor/glm
-	url = http://gitclone.com/github.com/g-truc/glm
+	url = http://github.com/g-truc/glm
