@@ -110,6 +110,7 @@ project "Sandbox"
 	{
 		"Birch/vendor/spdlog/include",
 		"Birch/src",
+		"Birch/vendor",
 		"%{IncludeDir.glm}"
 	}
 

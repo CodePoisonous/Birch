@@ -7,6 +7,7 @@
 #include "Events/Event.h"
 #include "Birch/Events/ApplicationEvent.h"
 
+#include "Birch/ImGui/ImGuiLayer.h"
 
 namespace Birch
 {
@@ -30,7 +31,8 @@ namespace Birch
 		bool OnWindowClose(WindowCloseEvent& e);
 		 
 	private:
-		std::unique_ptr<Window> m_Window;		
+		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

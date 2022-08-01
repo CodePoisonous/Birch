@@ -158,8 +158,6 @@
     <ClInclude Include="src\Birch\Log.h" />
     <ClInclude Include="src\Birch\MouseButtonCodes.h" />
     <ClInclude Include="src\Birch\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bcpch.h" />
@@ -579,11 +577,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp" />
+    <ClCompile Include="src\Birch\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Birch\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Birch\Layer.cpp" />
     <ClCompile Include="src\Birch\LayerStack.cpp" />
     <ClCompile Include="src\Birch\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bcpch.cpp">
