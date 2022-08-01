@@ -2,3 +2,6 @@
 [submodule "Birch/vendor/glm"]
 	path = Birch/vendor/glm
 	url = http://github.com/g-truc/glm
+[submodule "Birch/vendor/imgui"]
+	path = Birch/vendor/imgui
+	url = https://gitclone.com/github.com/TheCherno/imgui
