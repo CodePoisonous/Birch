@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef BC_PLATFORM_WINDOWS
+#if BC_DYNAMIC_LINK
 	#ifdef BC_BUILD_DLL
 		#define BIRCH_API __declspec(dllexport)
 	#else 
 		#define BIRCH_API __declspec(dllimport)
 	#endif
+#else
+	#define BIRCH_API
+#endif
 #else
 	#error Birch only support Windows!
 #endif
