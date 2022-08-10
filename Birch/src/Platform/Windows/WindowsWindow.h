@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Birch/Window.h"
+#include "Birch/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -31,11 +32,12 @@ namespace Birch
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
 			std::string Title;
-			unsigned int Width, Height;
+			unsigned int Width, Height; 
 			bool VSync;
 
 			EventCallbackFn EventCallback;

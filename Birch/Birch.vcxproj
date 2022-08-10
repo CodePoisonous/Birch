@@ -148,7 +148,9 @@
     <ClInclude Include="src\Birch\LayerStack.h" />
     <ClInclude Include="src\Birch\Log.h" />
     <ClInclude Include="src\Birch\MouseButtonCodes.h" />
+    <ClInclude Include="src\Birch\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Birch\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bcpch.h" />
@@ -573,6 +575,7 @@
     <ClCompile Include="src\Birch\Layer.cpp" />
     <ClCompile Include="src\Birch\LayerStack.cpp" />
     <ClCompile Include="src\Birch\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bcpch.cpp">
