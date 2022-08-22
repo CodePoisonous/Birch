@@ -8,6 +8,7 @@
 #include "Birch/Events/ApplicationEvent.h"
 
 #include "Birch/ImGui/ImGuiLayer.h"
+#include "Birch/Renderer/Shader.h"
 
 namespace Birch
 {
@@ -37,6 +38,7 @@ namespace Birch
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
