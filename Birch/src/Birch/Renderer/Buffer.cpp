@@ -11,10 +11,10 @@ namespace Birch {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			BC_CORE_ASSERTS(false, "RendererAPI::None is Currently not supported!");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -26,10 +26,10 @@ namespace Birch {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			BC_CORE_ASSERTS(false, "RendererAPI::None is Currently not supported!");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, size);
 		}
 
