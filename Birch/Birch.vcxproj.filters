@@ -1349,6 +1349,7 @@
     <ClInclude Include="src\Birch\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Birch\Renderer\RendererCommand.h" />
+    <ClInclude Include="src\Birch\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Application.cpp">
@@ -1388,5 +1389,6 @@
     <ClCompile Include="src\Birch\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendereAPI.cpp" />
     <ClCompile Include="src\Birch\Renderer\RendererCommand.cpp" />
+    <ClCompile Include="src\Birch\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

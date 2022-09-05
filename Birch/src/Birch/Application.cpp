@@ -13,6 +13,7 @@ namespace Birch {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		:m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)		// 控制渲染对象的位置
 	{
 		BC_CORE_ASSERTS(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -49,13 +50,15 @@ namespace Birch {
 				#version 330 core
 
 				layout(location = 0) in vec3 a_Position;
+				
+				uniform mat4 u_ViewProjection;
 
 				out vec3 v_Position;
 
 				void main()
 				{
 					v_Position = a_Position;
-					gl_Position = vec4(a_Position, 1.0);
+					gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 				}
 
 		)";
@@ -103,6 +106,8 @@ namespace Birch {
 				layout(location = 0) in vec3 a_Position;
 				layout(location = 1) in vec4 a_Color;
 
+				uniform mat4 u_ViewProjection;
+
 				out vec3 v_Position;
 				out vec4 v_Color;
 
@@ -110,14 +115,14 @@ namespace Birch {
 				{
 					v_Position = a_Position;
 					v_Color = a_Color;
-					gl_Position = vec4(a_Position, 1.0);
+					gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 				}
 
 		)";
 		std::string fragmentSrc = R"(
 				#version 330 core
 
-				layout(location = 0) out vec4 color;
+				layout(location = 0) out vec4 color;				
 				
 				in vec3 v_Position;
 				in vec4 v_Color;
@@ -163,22 +168,16 @@ namespace Birch {
 	{		
 		while (m_Running)
 		{
-			// glClearColor(0.1f, 0.1f, 0.1f, 1);
-			// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			RendererCommand::clear();
 
-			Renderer::BeginScene();
+			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });	// 控制视口的位置
+			m_Camera.SetRotation(45.0f);
 
-			m_BlueShader->Bind();
-			// m_SquareVA->Bind();
-			// glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			Renderer::Submit(m_SquareVA);
+			Renderer::BeginScene(m_Camera);
 
-			m_Shader->Bind();
-			// m_VertexArray->Bind();
-			// glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			Renderer::Submit(m_VertexArray);
+			Renderer::Submit(m_BlueShader, m_SquareVA);
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 

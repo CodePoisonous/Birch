@@ -12,6 +12,8 @@
 #include "Birch/Renderer/Buffer.h"
 #include "Birch/Renderer/VertexArray.h"
 
+#include "Birch/Renderer/OrthographicCamera.h"
+
 namespace Birch
 {
 	class BIRCH_API Application
@@ -44,6 +46,8 @@ namespace Birch
 		
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		orthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;
