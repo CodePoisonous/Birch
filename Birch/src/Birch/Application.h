@@ -7,16 +7,13 @@
 #include "Events/Event.h"
 #include "Birch/Events/ApplicationEvent.h"
 
-#include "Birch/ImGui/ImGuiLayer.h"
-#include "Birch/Renderer/Shader.h"
-#include "Birch/Renderer/Buffer.h"
-#include "Birch/Renderer/VertexArray.h"
+#include "Birch/Core/Timestep.h"
 
-#include "Birch/Renderer/OrthographicCamera.h"
+#include "Birch/ImGui/ImGuiLayer.h"
 
 namespace Birch
 {
-	class BIRCH_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -40,14 +37,7 @@ namespace Birch
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		orthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;	
 
 	private:
 		static Application* s_Instance;

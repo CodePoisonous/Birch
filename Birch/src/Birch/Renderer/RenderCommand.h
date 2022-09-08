@@ -4,7 +4,7 @@
 
 namespace Birch
 {
-	class RendererCommand
+	class RenderCommand
 	{
 	public:
 		inline static void SetClearColor(const glm::vec4& color)

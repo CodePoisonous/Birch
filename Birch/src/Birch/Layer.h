@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Birch/Core.h"
+#include "Birch/Core/Timestep.h"
 #include "Birch/Events/Event.h"
 
 namespace Birch {
@@ -13,7 +14,7 @@ namespace Birch {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

@@ -4,10 +4,10 @@
 
 namespace Birch {
 	
-	class orthographicCamera
+	class OrthographicCamera
 	{
 	public:
-		orthographicCamera(float left, float right, float bottom, float top);
+		OrthographicCamera(float left, float right, float bottom, float top);
 
 		const glm::vec3& GetPosition() const { return m_Position; }
 		void SetPosition(const glm::vec3& position) { m_Position = position;  RecalculateViewMatrix(); }
