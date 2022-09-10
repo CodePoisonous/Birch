@@ -1,8 +1,11 @@
 #include <Birch.h>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public Birch::Layer
 {
@@ -32,7 +35,7 @@ public:
 		squareIB.reset(Birch::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatColorShaderVertexSrc = R"(
 				#version 330 core
 
 				layout(location = 0) in vec3 a_Position;
@@ -49,20 +52,22 @@ public:
 				}
 
 		)";
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 				#version 330 core
 
 				layout(location = 0) out vec4 color;
 				
 				in vec3 v_Position;
 
+				uniform vec3 u_Color;
+
 				void main()
 				{
-					color = vec4(0.2, 0.3, 0.8, 1.0);
+					color = vec4(u_Color, 1.0);
 				}
 
 		)";
-		m_BlueShader.reset(new Birch::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader.reset(Birch::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
 		// Èý½ÇÐÎ
 		m_VertexArray.reset(Birch::VertexArray::Creat());
@@ -122,7 +127,7 @@ public:
 				}
 
 		)";
-		m_Shader.reset(new Birch::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Birch::Shader::Create(vertexSrc, fragmentSrc));
 	}
 
 	void OnUpdate(Birch::Timestep ts) override
@@ -138,9 +143,9 @@ public:
 			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
 		if (Birch::Input::IsKeyPressed(BC_KEY_A))
-			m_CameraPosition.x += m_CameraRotationSpeed * ts;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		else if (Birch::Input::IsKeyPressed(BC_KEY_D))
-			m_CameraPosition.x -= m_CameraRotationSpeed * ts;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 		Birch::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Birch::RenderCommand::clear();
@@ -151,16 +156,19 @@ public:
 		Birch::Renderer::BeginScene(m_Camera);
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Birch::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+				Birch::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		//Birch::Renderer::Submit(m_BlueShader, m_SquareVA);
 		Birch::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Birch::Renderer::EndScene();
@@ -168,27 +176,20 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-// 		ImGui::Begin("Test");
-// 		ImGui::Text("Hello, World");
-// 		ImGui::End();
+		ImGui::Begin("Setting");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Birch::Event& event) override
 	{
-// 		if (event.GetEventType() == Birch::EventType::KeyPressed)
-// 		{
-// 			Birch::KeyPressedEvent& e = (Birch::KeyPressedEvent&)event;
-// 			if (e.GetKeyCode() == BC_KEY_TAB)
-// 				BC_TRACE("Tab key is pressed(event)!");
-// 			BC_TRACE("{0}", (char)e.GetKeyCode()); 
-// 		}
 	}
 
 private:
 	std::shared_ptr<Birch::Shader> m_Shader;
 	std::shared_ptr<Birch::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Birch::Shader> m_BlueShader;
+	std::shared_ptr<Birch::Shader> m_FlatColorShader;
 	std::shared_ptr<Birch::VertexArray> m_SquareVA;
 
 	Birch::OrthographicCamera m_Camera;
@@ -197,6 +198,8 @@ private:
 
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 180.f;
+
+	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public Birch::Application
