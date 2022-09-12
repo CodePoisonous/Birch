@@ -37,7 +37,7 @@ namespace Birch {
 			glDeleteShader(VertexShader);
 
 			BC_CORE_ERROR("{0}", infoLog.data());
-			BC_CORE_ASSERTS(false, "Vertex Shader Compilation failure!");
+			BC_CORE_ASSERT(false, "Vertex Shader Compilation failure!");
 			return;
 		}
 
@@ -67,7 +67,7 @@ namespace Birch {
 			glDeleteShader(fragmentShader);
 
 			BC_CORE_ERROR("{0}", infoLog.data());
-			BC_CORE_ASSERTS(false, "Fragment Shader Compilation failure!");
+			BC_CORE_ASSERT(false, "Fragment Shader Compilation failure!");
 			return;
 		}
 
@@ -104,7 +104,7 @@ namespace Birch {
 			glDeleteShader(fragmentShader);
 
 			BC_CORE_ERROR("{0}", infoLog.data());
-			BC_CORE_ASSERTS(false, "Shader link failure!");
+			BC_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}
 

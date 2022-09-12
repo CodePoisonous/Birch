@@ -11,11 +11,11 @@ namespace Birch {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: BC_CORE_ASSERTS(false, "RendererAPI::None is Currently not supported!"); return nullptr;
+		case RendererAPI::API::None: BC_CORE_ASSERT(false, "RendererAPI::None is Currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
 
-		BC_CORE_ASSERTS(false, "Unknown RendererAPI");
+		BC_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
 
@@ -23,11 +23,11 @@ namespace Birch {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: BC_CORE_ASSERTS(false, "RendererAPI::None is Currently not supported!"); return nullptr;
+		case RendererAPI::API::None: BC_CORE_ASSERT(false, "RendererAPI::None is Currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		}
 
-		BC_CORE_ASSERTS(false, "Unknown RendererAPI");
+		BC_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
 }

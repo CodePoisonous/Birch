@@ -22,7 +22,7 @@ namespace Birch {
 		case Birch::ShaderDataType::Bool:     return GL_BOOL;
 		}
 	
-		BC_CORE_ASSERTS(false, "Unknown ShaderDataType!");
+		BC_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}	
 
@@ -48,7 +48,7 @@ namespace Birch {
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
-		BC_CORE_ASSERTS(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
+		BC_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();

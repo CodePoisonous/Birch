@@ -24,7 +24,7 @@ namespace Birch {
 		case ShaderDataType::Bool:		return 1;
 		}
 
-		BC_CORE_ASSERTS(false, "Unknown, ShaderDataType!");
+		BC_CORE_ASSERT(false, "Unknown, ShaderDataType!");
 		return 0;
 	}
 
@@ -58,7 +58,7 @@ namespace Birch {
 			case ShaderDataType::Bool:		return 1;
 			}
 
-			BC_CORE_ASSERTS(false, "Unknown, ShaderDataType!");
+			BC_CORE_ASSERT(false, "Unknown, ShaderDataType!");
 			return 0;
 		}
 	};

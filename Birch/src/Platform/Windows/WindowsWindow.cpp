@@ -43,7 +43,7 @@ namespace Birch
 		{
 			// TODO: glfwTerminate on system shutdown
 			int success = glfwInit();
-			BC_CORE_ASSERTS(success, "Could not initialize GLFW!");
+			BC_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}

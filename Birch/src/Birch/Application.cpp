@@ -16,7 +16,7 @@ namespace Birch {
 
 	Application::Application()		
 	{
-		BC_CORE_ASSERTS(!s_Instance, "Application already exists!");
+		BC_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = Scope<Window>(Window::Create());

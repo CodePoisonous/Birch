@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Birch/vendor/GLFW/include"
 IncludeDir["Glad"] = "Birch/vendor/Glad/include"
 IncludeDir["ImGui"] = "Birch/vendor/imgui"
 IncludeDir["glm"] = "Birch/vendor/glm"
+IncludeDir["stb_image"] = "Birch/vendor/stb_image"
 
 include "Birch/vendor/GLFW"
 include "Birch/vendor/Glad"
@@ -39,6 +40,8 @@ project "Birch"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -55,7 +58,8 @@ project "Birch"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

@@ -16,17 +16,18 @@ public:
 		// ¾ØÐÎ
 		m_SquareVA.reset(Birch::VertexArray::Creat());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		Birch::Ref<Birch::VertexBuffer> squareVB;
 		squareVB.reset(Birch::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{Birch::ShaderDataType::Float3, "a_Position"}
+			{Birch::ShaderDataType::Float3, "a_Position"},
+			{Birch::ShaderDataType::Float2, "a_TexCoord"}
 		});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -68,7 +69,47 @@ public:
 
 		)";
 		m_FlatColorShader.reset(Birch::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		
+		std::string textureShaderVertexSrc = R"(
+				#version 330 core
+			
+				layout(location = 0) in vec3 a_Position;
+				layout(location = 1) in vec2 a_TexCoord;
 
+				uniform mat4 u_ViewProjection;
+				uniform mat4 u_Transform;
+
+				out vec2 v_TexCoord;
+
+				void main()
+				{
+					v_TexCoord = a_TexCoord;
+					gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
+				}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+				#version 330 core
+				
+				layout(location = 0) out vec4 color;
+
+				in vec2 v_TexCoord;
+				
+				uniform sampler2D u_Texture;
+
+				void main()
+				{
+					color = texture(u_Texture, v_TexCoord);
+				}
+		)";
+
+		m_TextureShader.reset(Birch::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Birch::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		
 		// Èý½ÇÐÎ
 		m_VertexArray.reset(Birch::VertexArray::Creat());
 
@@ -169,7 +210,11 @@ public:
 				Birch::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		Birch::Renderer::Submit(m_Shader, m_VertexArray);
+		
+		m_Texture->Bind();
+		Birch::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		
+		//Birch::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Birch::Renderer::EndScene();
 	}
@@ -189,8 +234,10 @@ private:
 	Birch::Ref<Birch::Shader> m_Shader;
 	Birch::Ref<Birch::VertexArray> m_VertexArray;
 
-	Birch::Ref<Birch::Shader> m_FlatColorShader;
+	Birch::Ref<Birch::Shader> m_FlatColorShader, m_TextureShader;
 	Birch::Ref<Birch::VertexArray> m_SquareVA;
+
+	Birch::Ref<Birch::Texture2D> m_Texture;
 
 	Birch::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

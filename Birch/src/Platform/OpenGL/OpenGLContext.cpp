@@ -11,7 +11,7 @@ namespace Birch {
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 		:m_windowHandle(windowHandle)
 	{
-		BC_CORE_ASSERTS(m_windowHandle, "Window handle is null");
+		BC_CORE_ASSERT(m_windowHandle, "Window handle is null");
 	}
 
 	OpenGLContext::~OpenGLContext()
@@ -23,7 +23,7 @@ namespace Birch {
 	{
 		glfwMakeContextCurrent(m_windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		BC_CORE_ASSERTS(status, "Failed to initialize Glad!");
+		BC_CORE_ASSERT(status, "Failed to initialize Glad!");
 
 		BC_CORE_INFO("OpenGL Info: ");
 		BC_CORE_INFO(" Vendor:{0}", glGetString(GL_VENDOR));
