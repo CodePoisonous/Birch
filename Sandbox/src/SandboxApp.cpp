@@ -23,7 +23,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Birch::VertexBuffer> squareVB;
+		Birch::Ref<Birch::VertexBuffer> squareVB;
 		squareVB.reset(Birch::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{Birch::ShaderDataType::Float3, "a_Position"}
@@ -31,7 +31,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = {0, 1, 2, 2, 3, 0};
-		std::shared_ptr<Birch::IndexBuffer> squareIB;
+		Birch::Ref<Birch::IndexBuffer> squareIB;
 		squareIB.reset(Birch::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -78,7 +78,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Birch::VertexBuffer> vertexBuffer;
+		Birch::Ref<Birch::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Birch::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		vertexBuffer->SetLayout({
@@ -88,7 +88,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Birch::IndexBuffer> indexBuffer;
+		Birch::Ref<Birch::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Birch::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -155,7 +155,7 @@ public:
 
 		Birch::Renderer::BeginScene(m_Camera);
 
-		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_FlatColorShader)->Bind();
 		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
@@ -186,11 +186,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Birch::Shader> m_Shader;
-	std::shared_ptr<Birch::VertexArray> m_VertexArray;
+	Birch::Ref<Birch::Shader> m_Shader;
+	Birch::Ref<Birch::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Birch::Shader> m_FlatColorShader;
-	std::shared_ptr<Birch::VertexArray> m_SquareVA;
+	Birch::Ref<Birch::Shader> m_FlatColorShader;
+	Birch::Ref<Birch::VertexArray> m_SquareVA;
 
 	Birch::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

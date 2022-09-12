@@ -20,6 +20,7 @@
 
 #include "Birch/Renderer/Buffer.h"
 #include "Birch/Renderer/Shader.h"
+#include "Birch/Renderer/Texture.h"
 #include "Birch/Renderer/VertexArray.h"
 
 #include "Birch/Renderer/OrthographicCamera.h"
