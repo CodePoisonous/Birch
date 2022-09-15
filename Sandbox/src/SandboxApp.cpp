@@ -73,6 +73,7 @@ public:
 		m_TextureShader.reset(Birch::Shader::Create("assets/shaders/Texture.glsl"));
 
 		m_Texture = Birch::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_BirchLogoTexture = Birch::Texture2D::Create("assets/textures/Logo.png");
 
 		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -180,7 +181,10 @@ public:
 		
 		m_Texture->Bind();
 		Birch::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-		
+		m_BirchLogoTexture->Bind();
+		Birch::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Èý½ÇÐÎ
 		//Birch::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Birch::Renderer::EndScene();
@@ -204,7 +208,7 @@ private:
 	Birch::Ref<Birch::Shader> m_FlatColorShader, m_TextureShader;
 	Birch::Ref<Birch::VertexArray> m_SquareVA;
 
-	Birch::Ref<Birch::Texture2D> m_Texture;
+	Birch::Ref<Birch::Texture2D> m_Texture, m_BirchLogoTexture;
 
 	Birch::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
