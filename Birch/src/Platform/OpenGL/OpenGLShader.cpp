@@ -13,9 +13,17 @@ namespace Birch {
 		std::string source = ReadFile(filePath);
 		std::unordered_map<GLenum, std::string> shaderSource = PreProcess(source);
 		Compile(shaderSource);
+
+		// 从路径中提取名字
+		auto lastSlash = filePath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filePath.rfind('.');
+		auto count = lastDot == std::string::npos ? filePath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filePath.substr(lastSlash, count);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+		:m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> source;
 		source[GL_VERTEX_SHADER] = vertexSrc;
@@ -31,7 +39,7 @@ namespace Birch {
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
 		std::string result;
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
@@ -86,7 +94,9 @@ namespace Birch {
 		GLuint program = glCreateProgram();
 		m_RendererID = program;
 
-		std::vector<GLenum> glShaderIDs(shaderSources.size());
+		BC_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");
+		std::array<GLenum, 2> glShaderIDs;
+		int glShaderIDIndex = 0;
 
 		// 解析shader code
 		for (auto& kv : shaderSources)
@@ -119,8 +129,7 @@ namespace Birch {
 			}
 
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
-
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
 		glLinkProgram(program);

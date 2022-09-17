@@ -68,15 +68,15 @@ public:
 				}
 
 		)";
-		m_FlatColorShader.reset(Birch::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Birch::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 		
-		m_TextureShader.reset(Birch::Shader::Create("assets/shaders/Texture.glsl"));
+		auto TextureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Birch::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_BirchLogoTexture = Birch::Texture2D::Create("assets/textures/Logo.png");
 
-		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Birch::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(TextureShader)->Bind();
+		std::dynamic_pointer_cast<Birch::OpenGLShader>(TextureShader)->UploadUniformInt("u_Texture", 0);
 		
 		// 三角形
 		m_VertexArray.reset(Birch::VertexArray::Creat());
@@ -136,7 +136,7 @@ public:
 				}
 
 		)";
-		m_Shader.reset(Birch::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Birch::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 	}
 
 	void OnUpdate(Birch::Timestep ts) override
@@ -179,10 +179,12 @@ public:
 			}
 		}
 		
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Birch::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Birch::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_BirchLogoTexture->Bind();
-		Birch::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Birch::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// 三角形
 		//Birch::Renderer::Submit(m_Shader, m_VertexArray);
@@ -202,10 +204,11 @@ public:
 	}
 
 private:
+	Birch::ShaderLibrary m_ShaderLibrary;
 	Birch::Ref<Birch::Shader> m_Shader;
 	Birch::Ref<Birch::VertexArray> m_VertexArray;
 
-	Birch::Ref<Birch::Shader> m_FlatColorShader, m_TextureShader;
+	Birch::Ref<Birch::Shader> m_FlatColorShader;
 	Birch::Ref<Birch::VertexArray> m_SquareVA;
 
 	Birch::Ref<Birch::Texture2D> m_Texture, m_BirchLogoTexture;
