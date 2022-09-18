@@ -149,6 +149,7 @@
     <ClInclude Include="src\Birch\LayerStack.h" />
     <ClInclude Include="src\Birch\Log.h" />
     <ClInclude Include="src\Birch\MouseButtonCodes.h" />
+    <ClInclude Include="src\Birch\OrthographicCameraController.h" />
     <ClInclude Include="src\Birch\Renderer\Buffer.h" />
     <ClInclude Include="src\Birch\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Birch\Renderer\OrthographicCamera.h" />
@@ -590,6 +591,7 @@
     <ClCompile Include="src\Birch\Layer.cpp" />
     <ClCompile Include="src\Birch\LayerStack.cpp" />
     <ClCompile Include="src\Birch\Log.cpp" />
+    <ClCompile Include="src\Birch\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Birch\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Birch\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Birch\Renderer\RenderCommand.cpp" />

@@ -11,7 +11,7 @@ class ExampleLayer : public Birch::Layer
 {
 public:
 	ExampleLayer(std::string layerName)
-		:Layer(layerName), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		:Layer(layerName), m_CameraController(1280.0f / 720.0f, true)
 	{
 		// 矩形
 		m_SquareVA.reset(Birch::VertexArray::Creat());
@@ -141,28 +141,14 @@ public:
 
 	void OnUpdate(Birch::Timestep ts) override
 	{
-		if (Birch::Input::IsKeyPressed(BC_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Birch::Input::IsKeyPressed(BC_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+		// update
+		m_CameraController.OnUpdate(ts);
 
-		if (Birch::Input::IsKeyPressed(BC_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Birch::Input::IsKeyPressed(BC_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (Birch::Input::IsKeyPressed(BC_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if (Birch::Input::IsKeyPressed(BC_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
+		// Render
 		Birch::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Birch::RenderCommand::clear();
 
-		m_Camera.SetPosition(m_CameraPosition);	// 控制视口的位置
-		m_Camera.SetRotation(m_CameraRotation);	// 控制视口旋转
-
-		Birch::Renderer::BeginScene(m_Camera);
+		Birch::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -199,8 +185,9 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Birch::Event& event) override
+	void OnEvent(Birch::Event& e) override
 	{
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -212,14 +199,8 @@ private:
 	Birch::Ref<Birch::VertexArray> m_SquareVA;
 
 	Birch::Ref<Birch::Texture2D> m_Texture, m_BirchLogoTexture;
-
-	Birch::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.f;
-
+	
+	Birch::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 

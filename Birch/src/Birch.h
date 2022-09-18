@@ -11,6 +11,7 @@
 #include "Birch/Input.h"
 #include "Birch/KeyCodes.h"
 #include "Birch/MouseButtonCodes.h"
+#include "Birch/OrthographicCameraController.h"
 
 #include "Birch/ImGui/ImGuiLayer.h"
 
