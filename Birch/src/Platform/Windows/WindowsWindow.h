@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Birch/Window.h"
+#include "Birch/Core/Window.h"
 #include "Birch/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

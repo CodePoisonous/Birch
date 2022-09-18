@@ -57,16 +57,16 @@
     <ClInclude Include="src\Birch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Application.h">
+    <ClInclude Include="src\Birch\Core\Application.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Core.h">
+    <ClInclude Include="src\Birch\Core\Core.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
     <ClInclude Include="src\Birch\Core\Timestep.h">
       <Filter>src\Birch\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\EntryPoint.h">
+    <ClInclude Include="src\Birch\Core\EntryPoint.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
     <ClInclude Include="src\Birch\Events\ApplicationEvent.h">
@@ -84,22 +84,22 @@
     <ClInclude Include="src\Birch\ImGui\ImGuiLayer.h">
       <Filter>src\Birch\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Input.h">
+    <ClInclude Include="src\Birch\Core\Input.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\KeyCodes.h">
+    <ClInclude Include="src\Birch\Core\KeyCodes.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Layer.h">
+    <ClInclude Include="src\Birch\Core\Layer.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\LayerStack.h">
+    <ClInclude Include="src\Birch\Core\LayerStack.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Log.h">
+    <ClInclude Include="src\Birch\Core\Log.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\MouseButtonCodes.h">
+    <ClInclude Include="src\Birch\Core\MouseButtonCodes.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
     <ClInclude Include="src\Birch\Renderer\Buffer.h">
@@ -129,7 +129,7 @@
     <ClInclude Include="src\Birch\Renderer\VertexArray.h">
       <Filter>src\Birch\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\Window.h">
+    <ClInclude Include="src\Birch\Core\Window.h">
       <Filter>src\Birch</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -1401,10 +1401,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Birch\OrthographicCameraController.h" />
+    <ClInclude Include="src\Birch\Renderer\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Birch\Application.cpp">
+    <ClCompile Include="src\Birch\Core\Application.cpp">
       <Filter>src\Birch</Filter>
     </ClCompile>
     <ClCompile Include="src\Birch\ImGui\ImGuiBuild.cpp">
@@ -1413,13 +1413,13 @@
     <ClCompile Include="src\Birch\ImGui\ImGuiLayer.cpp">
       <Filter>src\Birch\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Birch\Layer.cpp">
+    <ClCompile Include="src\Birch\Core\Layer.cpp">
       <Filter>src\Birch</Filter>
     </ClCompile>
-    <ClCompile Include="src\Birch\LayerStack.cpp">
+    <ClCompile Include="src\Birch\Core\LayerStack.cpp">
       <Filter>src\Birch</Filter>
     </ClCompile>
-    <ClCompile Include="src\Birch\Log.cpp">
+    <ClCompile Include="src\Birch\Core\Log.cpp">
       <Filter>src\Birch</Filter>
     </ClCompile>
     <ClCompile Include="src\Birch\Renderer\Buffer.cpp">
@@ -1476,6 +1476,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Birch\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Birch\Renderer\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Birch/Log.h"
+#include "Birch/Core/Log.h"
 
 #ifdef BC_PLATFORM_WINDOWS
 	#include <Windows.h>

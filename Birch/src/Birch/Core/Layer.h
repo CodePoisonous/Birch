@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Birch/Core.h"
+#include "Birch/Core/Core.h"
 #include "Birch/Core/Timestep.h"
 #include "Birch/Events/Event.h"
 

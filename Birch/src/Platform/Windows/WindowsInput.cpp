@@ -1,7 +1,7 @@
 #include "bcpch.h"
 #include "WindowsInput.h"
 
-#include "Birch/Application.h"
+#include "Birch/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Birch {

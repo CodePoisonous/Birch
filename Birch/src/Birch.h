@@ -2,16 +2,16 @@
 
 // For use by Birch application
 
-#include "Birch/Application.h"
-#include "Birch/Layer.h"
-#include "Birch/Log.h"
+#include "Birch/Core/Application.h"
+#include "Birch/Core/Layer.h"
+#include "Birch/Core/Log.h"
 
 #include "Birch/Core/Timestep.h"
 
-#include "Birch/Input.h"
-#include "Birch/KeyCodes.h"
-#include "Birch/MouseButtonCodes.h"
-#include "Birch/OrthographicCameraController.h"
+#include "Birch/Core/Input.h"
+#include "Birch/Core/KeyCodes.h"
+#include "Birch/Core/MouseButtonCodes.h"
+#include "Birch/Renderer/OrthographicCameraController.h"
 
 #include "Birch/ImGui/ImGuiLayer.h"
 
@@ -28,5 +28,5 @@
 // -----------------------------------
 
 // --Entry Point-----------------------
-#include "Birch/EntryPoint.h"
+#include "Birch/Core/EntryPoint.h"
 // ------------------------------------

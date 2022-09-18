@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Birch/Core.h"
+#include "Birch/Core/Core.h"
 
 namespace Birch {
 

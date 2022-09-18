@@ -2,7 +2,7 @@
 
 #include "bcpch.h"
 
-#include "Birch/Core.h"
+#include "Birch/Core/Core.h"
 #include "Birch/Events/Event.h"
 
 namespace Birch

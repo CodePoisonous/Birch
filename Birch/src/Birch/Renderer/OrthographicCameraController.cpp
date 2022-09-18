@@ -1,8 +1,8 @@
 #include "bcpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Birch/Input.h"
-#include "Birch/KeyCodes.h"
+#include "Birch/Core/Input.h"
+#include "Birch/Core/KeyCodes.h"
 
 namespace Birch {
 

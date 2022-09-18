@@ -3,8 +3,8 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Birch/LayerStack.h"
-#include "Events/Event.h"
+#include "Birch/Core/LayerStack.h"
+#include "Birch/Events/Event.h"
 #include "Birch/Events/ApplicationEvent.h"
 
 #include "Birch/Core/Timestep.h"

@@ -1,7 +1,7 @@
 #include "bcpch.h"
 #include "Application.h"
 
-#include "Birch/Log.h"
+#include "Birch/Core/Log.h"
 
 #include "Birch/Renderer/Renderer.h"
 

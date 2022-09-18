@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Birch/Input.h"
+#include "Birch/Core/Input.h"
 
 namespace Birch {
 

@@ -134,22 +134,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Birch.h" />
-    <ClInclude Include="src\Birch\Application.h" />
-    <ClInclude Include="src\Birch\Core.h" />
+    <ClInclude Include="src\Birch\Core\Application.h" />
+    <ClInclude Include="src\Birch\Core\Core.h" />
     <ClInclude Include="src\Birch\Core\Timestep.h" />
-    <ClInclude Include="src\Birch\EntryPoint.h" />
+    <ClInclude Include="src\Birch\Core\EntryPoint.h" />
     <ClInclude Include="src\Birch\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Birch\Events\Event.h" />
     <ClInclude Include="src\Birch\Events\KeyEvent.h" />
     <ClInclude Include="src\Birch\Events\MouseEvent.h" />
     <ClInclude Include="src\Birch\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Birch\Input.h" />
-    <ClInclude Include="src\Birch\KeyCodes.h" />
-    <ClInclude Include="src\Birch\Layer.h" />
-    <ClInclude Include="src\Birch\LayerStack.h" />
-    <ClInclude Include="src\Birch\Log.h" />
-    <ClInclude Include="src\Birch\MouseButtonCodes.h" />
-    <ClInclude Include="src\Birch\OrthographicCameraController.h" />
+    <ClInclude Include="src\Birch\Core\Input.h" />
+    <ClInclude Include="src\Birch\Core\KeyCodes.h" />
+    <ClInclude Include="src\Birch\Core\Layer.h" />
+    <ClInclude Include="src\Birch\Core\LayerStack.h" />
+    <ClInclude Include="src\Birch\Core\Log.h" />
+    <ClInclude Include="src\Birch\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Birch\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Birch\Renderer\Buffer.h" />
     <ClInclude Include="src\Birch\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Birch\Renderer\OrthographicCamera.h" />
@@ -159,7 +159,7 @@
     <ClInclude Include="src\Birch\Renderer\Shader.h" />
     <ClInclude Include="src\Birch\Renderer\Texture.h" />
     <ClInclude Include="src\Birch\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Birch\Window.h" />
+    <ClInclude Include="src\Birch\Core\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -585,13 +585,13 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Birch\Application.cpp" />
+    <ClCompile Include="src\Birch\Core\Application.cpp" />
     <ClCompile Include="src\Birch\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Birch\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Birch\Layer.cpp" />
-    <ClCompile Include="src\Birch\LayerStack.cpp" />
-    <ClCompile Include="src\Birch\Log.cpp" />
-    <ClCompile Include="src\Birch\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Birch\Core\Layer.cpp" />
+    <ClCompile Include="src\Birch\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Birch\Core\Log.cpp" />
+    <ClCompile Include="src\Birch\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Birch\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Birch\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Birch\Renderer\RenderCommand.cpp" />
