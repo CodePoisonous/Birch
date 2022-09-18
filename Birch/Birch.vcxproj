@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -19,27 +19,26 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Birch</RootNamespace>
-    <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
-    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -136,30 +135,30 @@
     <ClInclude Include="src\Birch.h" />
     <ClInclude Include="src\Birch\Core\Application.h" />
     <ClInclude Include="src\Birch\Core\Core.h" />
-    <ClInclude Include="src\Birch\Core\Timestep.h" />
     <ClInclude Include="src\Birch\Core\EntryPoint.h" />
-    <ClInclude Include="src\Birch\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Birch\Events\Event.h" />
-    <ClInclude Include="src\Birch\Events\KeyEvent.h" />
-    <ClInclude Include="src\Birch\Events\MouseEvent.h" />
-    <ClInclude Include="src\Birch\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Birch\Core\Input.h" />
     <ClInclude Include="src\Birch\Core\KeyCodes.h" />
     <ClInclude Include="src\Birch\Core\Layer.h" />
     <ClInclude Include="src\Birch\Core\LayerStack.h" />
     <ClInclude Include="src\Birch\Core\Log.h" />
     <ClInclude Include="src\Birch\Core\MouseButtonCodes.h" />
-    <ClInclude Include="src\Birch\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Birch\Core\Timestep.h" />
+    <ClInclude Include="src\Birch\Core\Window.h" />
+    <ClInclude Include="src\Birch\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Birch\Events\Event.h" />
+    <ClInclude Include="src\Birch\Events\KeyEvent.h" />
+    <ClInclude Include="src\Birch\Events\MouseEvent.h" />
+    <ClInclude Include="src\Birch\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Birch\Renderer\Buffer.h" />
     <ClInclude Include="src\Birch\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Birch\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Birch\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Birch\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Birch\Renderer\Renderer.h" />
     <ClInclude Include="src\Birch\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Birch\Renderer\Shader.h" />
     <ClInclude Include="src\Birch\Renderer\Texture.h" />
     <ClInclude Include="src\Birch\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Birch\Core\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -586,14 +585,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Birch\Core\Application.cpp" />
-    <ClCompile Include="src\Birch\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Birch\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Birch\Core\Layer.cpp" />
     <ClCompile Include="src\Birch\Core\LayerStack.cpp" />
     <ClCompile Include="src\Birch\Core\Log.cpp" />
-    <ClCompile Include="src\Birch\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Birch\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Birch\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Birch\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Birch\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Birch\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Birch\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Birch\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Birch\Renderer\RendererAPI.cpp" />
