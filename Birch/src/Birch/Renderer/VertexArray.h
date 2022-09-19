@@ -19,6 +19,6 @@ namespace Birch {
 		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 		virtual const Ref<IndexBuffer>& GetIndexBuffer() const = 0;
 
-		static VertexArray* Creat();
+		static Ref<VertexArray> Creat();
 	};
 }

@@ -26,7 +26,3 @@
 
 #include "Birch/Renderer/OrthographicCamera.h"
 // -----------------------------------
-
-// --Entry Point-----------------------
-#include "Birch/Core/EntryPoint.h"
-// ------------------------------------

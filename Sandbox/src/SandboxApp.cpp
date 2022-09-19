@@ -1,4 +1,5 @@
 #include <Birch.h>
+#include <Birch/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -7,6 +8,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Birch::Layer
 {
 public:
@@ -14,7 +17,7 @@ public:
 		:Layer(layerName), m_CameraController(1280.0f / 720.0f, true)
 	{
 		// ¾ØÐÎ
-		m_SquareVA.reset(Birch::VertexArray::Creat());
+		m_SquareVA = Birch::VertexArray::Creat();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -79,7 +82,7 @@ public:
 		std::dynamic_pointer_cast<Birch::OpenGLShader>(TextureShader)->UploadUniformInt("u_Texture", 0);
 		
 		// Èý½ÇÐÎ
-		m_VertexArray.reset(Birch::VertexArray::Creat());
+		m_VertexArray = Birch::VertexArray::Creat();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -209,7 +212,8 @@ class Sandbox : public Birch::Application
 public:
 	Sandbox() 
 	{
-		PushLayer(new ExampleLayer("ExampleLayer"));
+		//PushLayer(new ExampleLayer("ExampleLayer"));
+		PushLayer(new Sandbox2D());
 	}
 	~Sandbox() {}
 };
