@@ -17,6 +17,7 @@
 
 // --Renderer--------------------------
 #include "Birch/Renderer/Renderer.h"
+#include "Birch/Renderer/Renderer2D.h"
 #include "Birch/Renderer/RenderCommand.h"
 
 #include "Birch/Renderer/Buffer.h"
