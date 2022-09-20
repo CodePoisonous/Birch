@@ -22,5 +22,7 @@ private:
 	Birch::Ref<Birch::Shader> m_FlatColorShader;
 	Birch::Ref<Birch::VertexArray> m_SquareVA;
 
+	Birch::Ref<Birch::Texture2D> m_CheckerboardTexture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
