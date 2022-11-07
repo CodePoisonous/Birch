@@ -17,12 +17,12 @@ namespace Birch {
 	Application::Application()		
 	{
 		BC_CORE_ASSERT(!s_Instance, "Application already exists!");
-		s_Instance = this;
+		s_Instance = this;									// 实例化app
 
-		m_Window = Scope<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window = Scope<Window>(Window::Create());			// 实例化窗口
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));	// 执行窗口关闭和窗户resize事件的回调函数，运行m_LayerStack各元素的OnEvent()
 
-		Renderer::Init();
+		Renderer::Init();									// 渲染器初始化
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);

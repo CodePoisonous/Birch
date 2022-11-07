@@ -42,6 +42,6 @@ namespace Birch {
 
 	private:
 		uint32_t m_RendererID;
-		std::string m_Name;
+		std::string m_Name;		// glsl的文件名
 	};
 }

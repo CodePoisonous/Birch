@@ -37,7 +37,6 @@ void Sandbox2D::OnUpdate(Birch::Timestep ts)
 	Birch::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
 
 	Birch::Renderer2D::EndScene();
-
 }
 
 void Sandbox2D::OnImGuiRender()

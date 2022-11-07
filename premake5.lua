@@ -9,6 +9,11 @@ workspace "Birch"
 		"Dist"
 	}
 
+	flags
+	{
+		"MultiprocessorCompile"
+	}
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directories)
@@ -19,9 +24,12 @@ IncludeDir["ImGui"] = "Birch/vendor/imgui"
 IncludeDir["glm"] = "Birch/vendor/glm"
 IncludeDir["stb_image"] = "Birch/vendor/stb_image"
 
-include "Birch/vendor/GLFW"
-include "Birch/vendor/Glad"
-include "Birch/vendor/imgui"
+group "Dependencies"
+	include "Birch/vendor/GLFW"
+	include "Birch/vendor/Glad"
+	include "Birch/vendor/imgui"
+
+group ""
 
 project "Birch"
 	location "Birch"
@@ -75,7 +83,6 @@ project "Birch"
 
 		defines
 		{
-			"BC_PLATFORM_WINDOWS",
 			"BC_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -126,11 +133,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"BC_PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "BC_DEBUG"

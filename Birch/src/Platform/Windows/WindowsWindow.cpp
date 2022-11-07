@@ -52,103 +52,108 @@ namespace Birch
 		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
 
-		glfwSetWindowUserPointer(m_Window, &m_Data);		// void*		
-		SetVSync(true);
+		glfwSetWindowUserPointer(m_Window, &m_Data);	// 将m_Data的地址绑到了m_Window的userPointer
+		SetVSync(true);									// 开启垂直同步
 
-		// 窗口尺寸重置回调
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			data.Width = width;
-			data.Height = height;
+			// 回调机制：将绑在m_Window.userPointer的m_Data地址
+			// 通过回调获取到WindowData&data中，然后再对data进行属性和Event设置
 
-			WindowResizeEvent event(width, height);
-			data.EventCallback(event);
-		}); 
-
-		// 窗口关闭回调
-		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			WindowCloseEvent event;
-			data.EventCallback(event);
-		});
-
-		// 键盘按键回调
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			
-			switch (action)
+			// 窗口尺寸重置回调
+			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
-			case GLFW_PRESS:
-			{
-				KeyPressedEvent event(key, 0);
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				data.Width = width;
+				data.Height = height;
+
+				WindowResizeEvent event(width, height);
 				data.EventCallback(event);
-				break;
-			}
-			case GLFW_RELEASE:
+			});
+
+			// 窗口关闭回调
+			glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
-				KeyReleasedEvent event(key);
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				WindowCloseEvent event;
 				data.EventCallback(event);
-				break;
-			}
-			case GLFW_REPEAT:
+			});
+
+			// 键盘按键回调
+			glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
-				KeyPressedEvent event(key, 1);
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				switch (action)
+				{
+				case GLFW_PRESS:
+				{
+					KeyPressedEvent event(key, 0);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					KeyReleasedEvent event(key);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_REPEAT:
+				{
+					KeyPressedEvent event(key, 1);
+					data.EventCallback(event);
+					break;
+				}
+				}
+			});
+
+			// 字符回调
+			glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int codepoint)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(codepoint);
 				data.EventCallback(event);
-				break;
-			}
-			}			
-		});
+			});
 
-		// 字符回调
-		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int codepoint)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			KeyTypedEvent event(codepoint);
-			data.EventCallback(event);
-		});
-
-		// 鼠标按键回调
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-			switch (action)
+			// 鼠标按键回调
+			glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
-			case GLFW_PRESS:
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				switch (action)
+				{
+				case GLFW_PRESS:
+				{
+					MouseButtonPressedEvent event(button);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					MouseButtonReleasedEvent event(button);
+					data.EventCallback(event);
+					break;
+				}
+				}
+			});
+
+			// 鼠标滚轮回调
+			glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset)
 			{
-				MouseButtonPressedEvent event(button);
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				MouseScrolledEvent event((float)xoffset, (float)yoffset);
 				data.EventCallback(event);
-				break;
-			}
-			case GLFW_RELEASE:
+			});
+
+			// 鼠标移动回调
+			glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos)
 			{
-				MouseButtonReleasedEvent event(button);
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				MouseMovedEvent event((float)xpos, (float)ypos);
 				data.EventCallback(event);
-				break;
-			}
-			}
-		});
-
-		// 鼠标滚轮回调
-		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-			MouseScrolledEvent event((float)xoffset, (float)yoffset);
-			data.EventCallback(event);
-		});
-
-		// 鼠标移动回调
-		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos)
-		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-			MouseMovedEvent event((float)xpos, (float)ypos);
-			data.EventCallback(event);
-		});
+			});
+		}		
 	}
 
 	void WindowsWindow::Shutdown()
